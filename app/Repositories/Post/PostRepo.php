@@ -30,4 +30,12 @@ class PostRepo{
     public function getPost($id){
         return $this->model->find($id);
     }
+
+    public function deletePost($id){
+        return $this->model->find($id)->delete();
+    }
+
+    public function updatePost($id,$data){
+        return $this->model->where('id',$id)->update($data);
+    }
 }

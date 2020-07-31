@@ -26,4 +26,12 @@ class PostController extends Controller
     public function addPost($id,Request $request){
         return $this->service->addPost($id,$request);
     }
+
+    public function deletePost($id){
+        return $this->service->deletePost($id);
+    }
+
+    public function updatePost($id,Request $request){
+        return $this->service->updatePost($id,$request);
+    }
 }

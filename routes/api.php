@@ -23,5 +23,7 @@ Route::group(['middleware'=>['jwt.verify']],function (){
     Route::delete('/profile/{id}','UserProfileController@deleteUserProfile');
     Route::post('/post/{id}','PostController@addPost');
     Route::get('/post/{id}','PostController@getPost');
+    Route::patch('/post/{id}','PostController@updatePost');
+    Route::delete('/post/{id}','PostController@deletePost');
     Route::get('/posts/{id}','PostController@getPosts');
 });

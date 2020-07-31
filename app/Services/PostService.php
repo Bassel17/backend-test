@@ -39,4 +39,27 @@ class PostService{
             return response()->json(['message'=>'post not added','error'=>$e,'status'=>500],500);
         }
     }
+
+    public function deletePost($id){
+        try{
+            $post = $this->repo->deletePost($id);
+            return response()->json(['status'=>200,'post'=>$post],200);
+        }catch(Exception $e){
+            return response()->json(['message'=>'can not delete post','error'=>$e,'status'=>500],500);
+        }
+    }
+
+    public function updatePost($id,$data){
+        try{
+            $post=$this->repo->getPost($id);
+            $dataToUpdate=[
+                'title'=> isset($data->title) ? $data->title : $post->title,
+                'description'=>isset($data->description) ? $data->description : $post->description,
+            ];
+            $this->repo->updatePost($id,$dataToUpdate);
+            return response()->json(['message' => 'Successfully updated post',"status"=>200],200);
+        }catch(Exception $e){
+            return response()->json(['error' => 'did not update'],500);
+        }
+    }
 }
