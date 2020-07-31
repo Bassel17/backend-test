@@ -36,6 +36,15 @@ class UserService{
         }
     }
 
+    public function logoutUser(){
+        try{
+            auth()->logout();
+            return response()->json(['message' => 'Successfully logged out',"status"=>200],200);
+        }catch(Exception $e){
+            return response()->json(['error' => 'did not log out server error'],500);
+        }
+    }
+
     protected function respondWithToken($token,$id){
 
         return response()->json([
