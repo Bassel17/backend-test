@@ -26,7 +26,7 @@ use this command to generate secret jwt key in your .env file
 run this command to create the tables and seed them with fake data
 ***
 `` php artisan serve ``<br>
-run this command to start the server, and your good to go
+run this command to start the server, and you're good to go
 
 
 
