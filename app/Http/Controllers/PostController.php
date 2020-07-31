@@ -15,6 +15,14 @@ class PostController extends Controller
         $this->service = new PostService;
     }
 
+    public function getPosts($id){
+        return $this->service->getPosts($id);
+    }
+
+    public function getPost($id){
+        return $this->service->getPost($id);
+    }
+
     public function addPost($id,Request $request){
         return $this->service->addPost($id,$request);
     }
