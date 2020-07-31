@@ -21,4 +21,5 @@ Route::group(['middleware'=>['jwt.verify']],function (){
     Route::post('/logout','AuthController@logout');
     Route::patch('/profile/{id}','UserProfileController@updateUserProfile');
     Route::delete('/profile/{id}','UserProfileController@deleteUserProfile');
+    Route::post('/post/{id}','PostController@addPost');
 });
