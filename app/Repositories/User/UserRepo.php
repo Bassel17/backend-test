@@ -32,6 +32,7 @@ class UserRepo {
     }
 
     public function deleteUser($id){
+        $this->model->find($id)->posts()->delete();
         $this->model->find($id)->delete();
     }
 }
