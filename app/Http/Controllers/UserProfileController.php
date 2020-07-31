@@ -15,4 +15,8 @@ class UserProfileController extends Controller
     public function updateUserProfile($id,Request $request){
         return $this->service->updateUser($id,$request);
     }
+
+    public function deleteUserProfile($id){
+        return $this->service->deleteUser($id);
+    }
 }

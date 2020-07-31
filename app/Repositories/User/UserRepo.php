@@ -18,8 +18,8 @@ class UserRepo {
     }
 
     public function getUserByEmail($email){
-        $users = $this->model->where('email',$email)->get();
-        return $users[0];
+        $user = $this->model->where('email',$email)->first();
+        return $user;
     }
 
     public function getUser($id){
@@ -29,5 +29,9 @@ class UserRepo {
 
     public function updateUser($id,$info){
         return $this->model->where('id',$id)->update($info);
+    }
+
+    public function deleteUser($id){
+        $this->model->find($id)->delete();
     }
 }

@@ -17,7 +17,7 @@ class UserService{
         try{
             $user = $this->userRepo->registerUser($userInfo);
             $user_id = $user->id;
-            $token = $user->password;
+            $token = auth()->login($user);
             return $this->respondWithToken($token,$user_id);
         }catch(Exception $e){
             return response()->json(['error'=>'user not registered','status'=>500],500);
@@ -57,6 +57,15 @@ class UserService{
             return response()->json(['message' => 'Successfully updated profile',"status"=>200],200);
         }catch(Exception $e){
             return response()->json(['error' => 'did not update'],500);
+        }
+    }
+
+    public function deleteUser($id){
+        try{
+            $this->userRepo->deleteUser($id);
+            return response()->json(['message' => 'Successfully deleted profile',"status"=>200],200);
+        }catch(Exception $e){
+            return response()->json(['error' => $e],500);
         }
     }
 
