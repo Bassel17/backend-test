@@ -10,6 +10,9 @@ use this command to create a copy of the .env.exmaple file
 `` php artisan key:generate ``<br>
 use this command to generate an app key
 ***
+`` php artisan jwt:secret ``<br>
+use this command to generate secret jwt key in your .env file
+***
 ## configure the .env file
 * DB_CONNECTION= sql database you are using
 * DB_HOST= hostname
