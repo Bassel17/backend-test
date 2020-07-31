@@ -22,4 +22,12 @@ class AuthController extends Controller
         ];
         return $this->service->registerUser($userInfo);
     }
+
+    public function login(Request $request){
+        $credentials = [
+            'email'=>$request->email,
+            'password'=>$request->password,
+        ];
+        return $this->service->loginUser($credentials);
+    }
 }

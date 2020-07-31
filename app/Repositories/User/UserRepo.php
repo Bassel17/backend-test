@@ -16,4 +16,9 @@ class UserRepo {
         $user = $this->model->create($userInfo);
         return $user;
     }
+
+    public function getUser($email){
+        $users = $this->model->where('email',$email)->get();
+        return $users[0];
+    }
 }

@@ -24,6 +24,18 @@ class UserService{
         }
     }
 
+    public function loginUser($credentials){
+        try{
+            if($token = auth()->attempt($credentials)){
+                $user = $this->userRepo->getUser($credentials['email']);
+                return $this->respondWithToken($token,$user->id);
+            }
+            return response()->json(['error' => 'Unauthorized','status'=>401],401);
+        }catch(Exception $e){
+            return response()->json(['error'=>'server error','status'=>500],500);
+        }
+    }
+
     protected function respondWithToken($token,$id){
 
         return response()->json([
