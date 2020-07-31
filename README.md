@@ -20,9 +20,10 @@ use this command to generate secret jwt key in your .env file
 * DB_DATABASE= database name
 * DB_USERNAME= the username of the database
 * DB_PASSWORD= password of the database
+* JWT_TTL= time in minutes for the duration of the jwt token by default it is (60)
 ***
-`` php artisan migrate ``<br>
-run this command to create the tables
+`` php artisan migrate --seed``<br>
+run this command to create the tables and seed them with fake data
 ***
 `` php artisan serve ``<br>
 run this command to start the server, and your good to go
