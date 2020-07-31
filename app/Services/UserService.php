@@ -27,7 +27,7 @@ class UserService{
     public function loginUser($credentials){
         try{
             if($token = auth()->attempt($credentials)){
-                $user = $this->userRepo->getUser($credentials['email']);
+                $user = $this->userRepo->getUserByEmail($credentials['email']);
                 return $this->respondWithToken($token,$user->id);
             }
             return response()->json(['error' => 'Unauthorized','status'=>401],401);
@@ -42,6 +42,21 @@ class UserService{
             return response()->json(['message' => 'Successfully logged out',"status"=>200],200);
         }catch(Exception $e){
             return response()->json(['error' => 'did not log out server error'],500);
+        }
+    }
+
+    public function updateUser($id,$infoToUpdate){
+        try{
+            $user=$this->userRepo->getUser($id);
+            $info=[
+                'name'=> isset($infoToUpdate->name) ? $infoToUpdate->name : $user->name,
+                'email'=>isset($infoToUpdate->email) ? $infoToUpdate->email : $user->email,
+                'language_id'=>isset($infoToUpdate->language_id) ? $infoToUpdate->language_id : $user->language_id
+            ];
+            $this->userRepo->updateUser($id,$info);
+            return response()->json(['message' => 'Successfully updated profile',"status"=>200],200);
+        }catch(Exception $e){
+            return response()->json(['error' => 'did not update'],500);
         }
     }
 
