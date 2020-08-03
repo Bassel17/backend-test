@@ -12,6 +12,10 @@ class UserProfileController extends Controller
         $this->service = new UserService;
     }
 
+    public function getUserProfile($id){
+        return $this->service->getUser($id);
+    }
+
     public function updateUserProfile($id,Request $request){
         return $this->service->updateUser($id,$request);
     }

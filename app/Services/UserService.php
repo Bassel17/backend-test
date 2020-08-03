@@ -13,6 +13,15 @@ class UserService{
         $this->userRepo = new UserRepo;
     }
 
+    public function getUser($user_id){
+        try{
+            $user = $this->userRepo->getUser($user_id);
+            return response()->json(['user'=>$user,"status"=>200],200);
+        }catch(Exception $e){
+            return response()->json(['error'=>$e,'status'=>500],500);
+        }
+    }
+
     public function registerUser($userInfo){
         try{
             $user = $this->userRepo->registerUser($userInfo);
